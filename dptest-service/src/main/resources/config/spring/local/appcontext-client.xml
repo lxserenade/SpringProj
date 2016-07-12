@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="categoryInfoService" class="com.dianping.dpsf.spring.ProxyBeanFactory" init-method="init">
+        <property name="serviceName"
+                  value="http://service.dianping.com/gisService/categoryInfoService_1.0.0"/>
+        <property name="iface" value="com.dianping.category.remote.service.CategoryInfoService"/>
+        <property name="serialize" value="hessian"/>
+        <property name="callMethod" value="sync"/>
+        <property name="timeout" value="500"/>
+    </bean>
+
+    <bean id="shopService" class="com.dianping.dpsf.spring.ProxyBeanFactory" init-method="init">
+        <property name="serviceName" value="http://service.dianping.com/shopService/shopService_2.0.0"/>
+        <property name="iface" value="com.dianping.shopremote.remote.ShopService"/>
+        <property name="serialize" value="hessian"/>
+        <property name="callMethod" value="sync"/>
+        <property name="timeout" value="1000"/>
+    </bean>
+
+    <bean id="picUserService" class="com.dianping.dpsf.spring.ProxyBeanFactory" init-method="init">
+        <property name="serviceName" value="UGCPicService.PicUserService"/>
+        <property name="iface" value="com.dianping.ugc.pic.remote.service.PicUserService"/>
+        <property name="serialize" value="hessian"/>
+        <property name="callMethod" value="sync"/>
+        <property name="timeout" value="1000"/>
+    </bean>
+
+    <bean id="feedRepositoryService" class="com.dianping.dpsf.spring.ProxyBeanFactory"
+          init-method="init">
+        <property name="serviceName"
+                  value="http://service.dianping.com/feedPlatformService/feedRepositoryService_1.0.0" />
+        <property name="iface"
+                  value="com.dianping.feed.platform.FeedRepositoryService" />
+        <property name="serialize" value="hessian" />
+        <property name="callMethod" value="oneway" />
+        <property name="timeout" value="1000" />
+    </bean>
+
+    <!--美团点评POI互转服务-->
+    <bean id="mtPoiService" class="com.dianping.dpsf.spring.ProxyBeanFactory" init-method="init">
+        <property name="serviceName"
+                  value="http://service.dianping.com/poi-main-Service/MtPoiService_1.0.0"/>
+        <property name="iface" value="com.dianping.poi.flow.service.MtPoiService"/>
+        <property name="serialize" value="hessian"/>
+        <property name="callMethod" value="sync"/>
+        <property name="timeout" value="500"/>
+    </bean>
+</beans>

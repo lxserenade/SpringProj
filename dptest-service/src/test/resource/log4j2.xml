@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="UgcReviewService" packages="com.dianping">
+    <Properties>
+        <Property name="log-path">/data/applogs/ugc-review-service/logs</Property>
+    </Properties>
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <!-- 需要记录的级别 -->
+            <PatternLayout pattern="[%p][%d] [%c] %m%n"/>
+        </Console>
+        <!-- 记录除用户行为日志外的所有信息 -->
+        <RollingFile name="appAppender"
+                     fileName="${log-path}/app.log"
+                     filePattern="${log-path}/app.log.%d{yyyy-MM-dd}">
+            <PatternLayout pattern="[%p][%d] [%c] %m%n"/>
+            <Policies>
+                <!-- 这里的interval由filePattern中的最小时间单位来决定,如果filePattern 中是天,这1就是1天-->
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingFile>
+        <!-- 独立的 error appender 便于排查问题 -->
+        <RollingFile name="errorAppender"
+                     fileName="${log-path}/error.log"
+                     filePattern="${log-path}/error.log.%d{yyyy-MM-dd}">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="[%p][%d][%c] %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingFile>
+
+        <UgcCatAppender name="ugcCatAppender">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+        </UgcCatAppender>
+    </Appenders>
+    <Loggers>
+        <AsyncRoot level="info">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="ugcCatAppender"/>
+            <AppenderRef ref="appAppender"/>
+            <AppenderRef ref="errorAppender"/>
+        </AsyncRoot>
+    </Loggers>
+</Configuration>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dianping.dptest.mapper.Picdao">
+    <sql id="allFields">
+        PicID,Url ,Title,
+        FlowerCount,FollowCount,
+        Popularity,AddTime,
+        LastTime,UserID,LastIP,
+        Width,Height,ClientType,
+        Status,Secret
+    </sql>
+
+    <select id="getPicById" parameterType="integer" resultType="com.dianping.dptest.entity.Picture">
+        SELECT
+        <include refid="allFields" />
+        FROM PC_Picture
+        WHERE
+        PicID=#{picId} AND Status=1
+    </select>
+
+    <select id="getPicByUserId" parameterType="integer" resultType="com.dianping.dptest.entity.Picture">
+        SELECT
+        <include refid="allFields" />
+        FROM PC_Picture
+        WHERE
+        UserID=#{userId} AND Status=1
+    </select>
+
+</mapper>
