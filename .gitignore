@@ -4,6 +4,6 @@
 *.iml
 **/.idea
 **/target
-
+.DS_Store
 logs
 *.12d
