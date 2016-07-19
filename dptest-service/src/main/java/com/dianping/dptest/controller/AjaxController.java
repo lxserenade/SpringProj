@@ -1,11 +1,13 @@
 package com.dianping.dptest.controller;
 
 import com.dianping.dptest.model.AjaxResponseBody;
+import com.dianping.dptest.model.PicPostData;
+import com.dianping.piccenterremote.remote.UserPictureService;
+import com.dianping.piccenterremote.remote.dto.PictureDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +18,9 @@ import java.util.Map;
  */
 @Controller
 public class AjaxController {
+
+    @Autowired
+    UserPictureService userPictureService;
 
     @ResponseBody
     @RequestMapping(value = "/ajax/api/getResult",method= RequestMethod.GET)
@@ -32,20 +37,7 @@ public class AjaxController {
 
     }
 
-    @ResponseBody
-    @RequestMapping(value="/ajax/api/getPostData",method = RequestMethod.POST)
-    public AjaxResponseBody getPostData(@RequestBody Map<String,String> body){
 
-        AjaxResponseBody result = new AjaxResponseBody();
-        //logic
-        result.setCode("101");
-        result.setMsg("success");
-        List<String> res= Arrays.asList("sup1", "sup2", "sup3");
-
-        result.setResult(res);
-        return result;
-
-    }
 
 }
 

@@ -11,7 +11,7 @@
 
     <artifactId>dptest-service</artifactId>
     <version>1.0.0</version>
-    <name>dptest-web</name>
+    <name>dptest</name>
     <packaging>war</packaging>
     <url>http://maven.apache.org</url>
 
@@ -31,6 +31,12 @@
                 </exclusion>
             </exclusions>
             <version>0.3.31.00</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.dianping</groupId>
+            <artifactId>piccenter-remote</artifactId>
+            <version>1.5.5</version>
         </dependency>
 
         <dependency>
@@ -229,6 +235,11 @@
             <version>19.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>

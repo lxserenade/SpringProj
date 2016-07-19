@@ -19,6 +19,13 @@
         <property name="timeout" value="1000"/>
     </bean>
 
+    <bean id="userPictureService" class="com.dianping.dpsf.spring.ProxyBeanFactory" init-method="init">
+        <property name="serviceName" value="http://service.dianping.com/picCenterServiceServer/userPictureService_1.0.0" />
+        <property name="iface" value="com.dianping.piccenterremote.remote.UserPictureService" />
+        <property name="serialize" value="hessian" />
+        <property name="callMethod" value="sync" />
+        <property name="timeout" value="5000" />
+    </bean>
     <bean id="picUserService" class="com.dianping.dpsf.spring.ProxyBeanFactory" init-method="init">
         <property name="serviceName" value="UGCPicService.PicUserService"/>
         <property name="iface" value="com.dianping.ugc.pic.remote.service.PicUserService"/>
